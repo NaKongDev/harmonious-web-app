@@ -1,0 +1,375 @@
+"use client";
+import React, { useState } from "react";
+import { Poppins } from "next/font/google";
+import { motion } from "motion/react";
+import {
+  MousePointerClick,
+  Flame,
+  BuildingComplex,
+  Handshake,
+  ClipboardClock,
+  UserRoundGroup,
+  Brain,
+  MessageCircleText,
+  MoveRight,
+  UsersRound,
+  Hourglass,
+  Package,
+} from "lucide-react";
+import CountUp from "@/component/CountUp";
+import LeadSolidMore from "@/component/LeadSolidMore";
+import LeadTeamMore from "@/component/LeadTeamMore";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-poppins-next",
+  display: "swap",
+});
+
+function page() {
+  const [page, setPage] = useState<
+    "home" | "about" | "service" | "trackRecords"
+  >("home");
+  const [clicker, setClocker] = useState<boolean>(false);
+  const [openSolid, setOpenSolid] = useState<boolean>(false);
+  const [openTeam, setOpenTeam] = useState<boolean>(false);
+  const [openSmart, setOpenSmart] = useState<boolean>(false);
+  const [openSup, setOpenSup] = useState<boolean>(false);
+  return (
+    <div
+      // className={`bg-linear-to-b from-[#FFFFFF] to-[#FBD2B6] h-600 ${poppins.variable} font-poppins`}
+      className={`bg-[#FFFFFF] ${poppins.variable} font-poppins`}
+    >
+      <LeadSolidMore open={openSolid} onClose={() => setOpenSolid(false)} />
+      <LeadTeamMore open={openTeam} onClose={() => setOpenTeam(false)} />
+
+      <div className="fixed flex justify-between items-center md:px-15 px-5 pt-5 top-0 w-full text-lg">
+        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+          <img
+            src="/LogoHMS3.png"
+            className="w-40 drop-shadow-lg drop-shadow-orange-300/50"
+            alt="Logo"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          className="hidden md:flex justify-between text-base items-center gap-5 bg-white font-bold rounded-full border border-black/10 shadow-gray-500/20 backdrop-blur-xl shadow-lg py-1 px-1"
+        >
+          <motion.button
+            whileTap={{ scale: 0.8 }}
+            className={`px-5 py-1 rounded-full ${page === "home" ? "bg-[#F97316] text-white" : "bg-white"} duration-300`}
+            onClick={() => {
+              setPage("home");
+            }}
+          >
+            Home
+          </motion.button>
+          <motion.button
+            whileTap={{ scale: 0.8 }}
+            className={`px-5 py-1 rounded-full ${page === "about" ? "bg-[#F97316] text-white" : "bg-white"} duration-300`}
+            onClick={() => {
+              setPage("about");
+            }}
+          >
+            About
+          </motion.button>
+          <motion.button
+            whileTap={{ scale: 0.8 }}
+            className={`px-5 py-1 rounded-full ${page === "service" ? "bg-[#F97316] text-white" : "bg-white"} duration-300`}
+            onClick={() => {
+              setPage("service");
+            }}
+          >
+            Service
+          </motion.button>
+          <motion.button
+            whileTap={{ scale: 0.8 }}
+            className={`px-5 py-1 rounded-full ${page === "trackRecords" ? "bg-[#F97316] text-white" : "bg-white"} duration-300`}
+            onClick={() => {
+              setPage("trackRecords");
+            }}
+          >
+            Track Records
+          </motion.button>
+        </motion.div>
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.8 }}
+          className="flex gap-3 text-sm items-center bg-[#F97316] px-5 py-2 rounded-full text-white font-bold shadow-lg border border-black/10"
+          onClick={() => setClocker(true)}
+        >
+          Contact Us{" "}
+          <div>
+            <MousePointerClick size={23} />
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="pt-25 flex flex-col gap-10">
+        <div className="md:px-55 px-5 grid md:grid-cols-2 grid-cols-1 p-2 gap-5">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="flex flex-col gap-5"
+          >
+            <p className="text-4xl font-bold">Welcome to</p>
+            <p className="md:text-8xl text-5xl font-bold text-[#F97316] text-shadow-lg/80 text-shadow-orange-300">
+              Harmonious
+            </p>
+            <p className="text-gray-600 w-[80%]">
+              22 Years of Experience in providing business solution! We help our
+              clients to achieve their goals im improving supply operations.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="flex justify-center items-center"
+          >
+            <img
+              src={"/image_header.jpg"}
+              className="w-full rounded-lg shadow-xl shadow-gray-500/20 border border-black/20"
+            />
+          </motion.div>
+        </div>
+
+        <div className="md:px-55 px-5 md:flex not-md:grid not-md:grid-cols-1 not-md:gap-5 justify-center items-center gap-30">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            whileHover={{ scale: 1.5 }}
+            className="md:w-[25%] shadow-lg border border-black/10  bg-white text-[#F97316] hover:bg-[#F97316] hover:text-white rounded-lg px-5 py-8 flex flex-col items-center gap-3 duration-300"
+          >
+            <Flame size={40} />
+            <span className="w-full text-center text-xl font-bold">
+              Innovation with Passion
+            </span>
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            whileHover={{ scale: 1.5 }}
+            className="md:w-[25%] shadow-lg border border-black/10 bg-white text-[#F97316] hover:bg-[#F97316] hover:text-white rounded-lg p-5 py-8 flex flex-col items-center gap-3 duration-300"
+          >
+            <BuildingComplex size={40} />
+            <span className="w-full text-center text-xl font-bold">
+              Business Insight & accuracy
+            </span>
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            whileHover={{ scale: 1.5 }}
+            className="md:w-[25%] shadow-lg border border-black/10 bg-white text-[#F97316] hover:bg-[#F97316] hover:text-white rounded-lg p-5 py-8 flex flex-col items-center gap-3 duration-300"
+          >
+            <Handshake size={40} />
+            <span className="w-full text-center text-xl font-bold">
+              Reliability & partnership
+            </span>
+          </motion.div>
+        </div>
+
+        <div className="md:px-55 px-5 py-10 bg-linear-to-br from-orange-600 to-orange-400 w-full text-white grid md:grid-cols-2 grid-cols-1">
+          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+            <div className="text-5xl font-bold">Why Choose Harmonious ?</div>
+            <div className="h-2 mt-3 bg-white w-55 rounded-full"></div>
+            <div className="mt-10">
+              <div className="text-base w-[75%]">
+                Founded in 2004, office located in Chatuchak Disctrict, Bangkok,
+                Thailand. With extensive experiences as SAP consultants of our
+                staff, our clients will benefit from our industry expertise and
+                strong knowledge in SAP and Microsoft Dynamics CRM.
+              </div>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="grid md:grid-cols-2 grid-cols-1 gap-5 text-black"
+          >
+            <div className="bg-white p-5 flex flex-col gap-3 shadow-lg">
+              <ClipboardClock size={32} className="text-[#F97316]" />
+              <p className="font-bold text-xl">Solid Track Records</p>
+              <p className="text-sm">22 years of proven business experience.</p>
+              <p
+                className="hover:text-[#F97316] duration-300 flex items-center gap-2"
+                onClick={() => setOpenSolid(true)}
+              >
+                Lead more <MoveRight size={15} />
+              </p>
+            </div>
+            <div className="bg-white p-5 flex flex-col gap-3 shadow-lg">
+              <UserRoundGroup size={32} className="text-[#F97316]" />
+              <p className="font-bold text-xl">Team of Professionals</p>
+              <p className="text-sm">Experienced SAP and CRM consultants.</p>
+              <p
+                className="hover:text-[#F97316] duration-300 flex items-center gap-2"
+                onClick={() => setOpenTeam(true)}
+              >
+                Lead more <MoveRight size={15} />
+              </p>
+            </div>
+            <div className="bg-white p-5 flex flex-col gap-3 shadow-lg">
+              <Brain size={32} className="text-[#F97316]" />
+              <p className="font-bold text-xl">Smart Technology</p>
+              <p className="text-sm">Modern solutions for business growth.</p>
+              <p className="hover:text-[#F97316] duration-300 flex items-center gap-2">
+                Lead more <MoveRight size={15} onClick={() => setOpenSmart(true)}/>
+              </p>
+            </div>
+            <div className="bg-white p-5 flex flex-col gap-3 shadow-lg">
+              <MessageCircleText size={32} className="text-[#F97316]" />
+              <p className="font-bold text-xl">Support</p>
+              <p className="text-sm">Reliable support whenever you need it.</p>
+              <p className="hover:text-[#F97316] duration-300 flex items-center gap-2">
+                Lead more <MoveRight size={15} onClick={() => setOpenSup(true)}/>
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="md:px-55 px-5 py-10 w-full grid md:grid-cols-3 grid-cols-1 gap-10">
+          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+            <div className="text-5xl font-bold">What We Do ?</div>
+            <div className="h-2 mt-3 bg-linear-to-br from-orange-600 to-orange-400 w-55 rounded-full"></div>
+            <div className="text-base w-[75%] mt-10">
+              A group of results oriented, passionate and technology savvy
+              company in Bangkok with operating for over 20 years now serving 50
+              over customers. Our belief in harmony of human and technology,
+              relationship and commitment to deliver becomes the recipe of our
+              success.
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="flex flex-col gap-5"
+          >
+            <img src={"/SAP.jpg"} />
+            <div className="text-2xl font-bold">SAP Implementation</div>
+            <div className="text-sm w-[75%]">
+              Provides our clients the solutions in SAP to fully utilized their
+              SAP investment. We also provide ABAP/4 programmer. Harmonious has
+              in-house product, Harmonious Asset Tracking System, to automate
+              asset inventory task.
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="flex flex-col gap-5"
+          >
+            <img src={"/LUI.jpg"} />
+            <div className="text-2xl font-bold">LiquidUI</div>
+            <div className="text-sm w-[75%]">
+              Proven End-To-End Solutions that Simplify and Customize SAP ERP.
+              LiquidUI solution suites enable users to streamline SAP processes
+              without complicated and expensive ABAP and Java programming. This
+              enables an organization to customize transaction screens to the
+              restricted requirements of specific jobs, while leaving essential
+              SAP coding untouched.
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="flex flex-col gap-5"
+          >
+            <img src={"/Micro.jpg"} />
+            <div className="text-2xl font-bold">Microsoft Dynamics 365 CRM</div>
+            <div className="text-sm w-[75%]">
+              Microsoft Dynamics CRM meets the changing expectations of
+              customers with a service solution that is robust and flexible.
+              Users find familiar functionality and an interface that let them
+              work in a personal, natural way. This intelligent solution informs
+              customer service professionals with guidance that is insightful
+              and actionable. The result is a connected, collaborative, and
+              integrated organization.
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="flex flex-col gap-5"
+          >
+            <img src={"/barcode.jpg"} />
+            <div className="text-2xl font-bold">T-Barcode</div>
+            <div className="text-sm w-[75%]">
+              TBarCode/SAPwin is the flexible bar code solution for SAP ERP, R/3
+              and mySAP ERP in Windows environments – both for local and for
+              network printers.By using TBarCode/SAPwin you can print all common
+              barcodes on all Windows printers. You can avoid special equipment
+              like bar code cartridges, bar code fonts or barcode
+              printers.TBarCode/SAPwin can be used with SAPscript, ABAP and
+              SmartForms. All predefined forms in SAP are supported.
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="flex flex-col gap-5"
+          >
+            <img src={"/order.jpg"} />
+            <div className="text-2xl font-bold">Smart Order</div>
+            <div className="text-sm w-[75%]">
+              “Smart Order” streamline order-to-cash process. Enable customer
+              track statuses of the order (From Order Approval, Order shipment,
+              Invoice and etc.) Fully integrated to client back-end ERP such as
+              SAP system
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="md:px-55 px-5 py-10 h-fit bg-linear-to-br from-orange-600 to-orange-400 w-full">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="border border-black/10 bg-[#FFFFFF] shadow-gray-500/20 rounded-xl p-5 grid grid-cols-1 md:grid-cols-3 gap-10"
+          >
+            <div className="flex md:justify-center items-end gap-5">
+              <Hourglass size={70} className="text-[#F97316]" />
+              <div>
+                <div className="text-[#F97316] text-4xl font-bold">
+                  <CountUp value={22} duration={2.5} />
+                </div>
+                <div className="font-bold">Years Experience</div>
+              </div>
+            </div>
+            <div className="flex md:justify-center items-end gap-5">
+              <Package size={70} className="text-[#F97316]" />
+              <div>
+                <div className="text-[#F97316] text-4xl font-bold">
+                  <CountUp value={368} duration={2.5} />
+                </div>
+                <div className="font-bold">Projects</div>
+              </div>
+            </div>
+            <div className="flex md:justify-center items-end gap-5">
+              <UsersRound size={70} className="text-[#F97316]" />
+              <div>
+                <div className="text-[#F97316] text-4xl font-bold">
+                  <CountUp value={72} duration={2.5} />
+                </div>
+                <div className="font-bold">Customers</div>
+              </div>
+            </div>
+          </motion.div>
+          {/*  */}
+        </div>
+
+        <div className="md:px-55 px-5 py-5 ">
+          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+            <div className="text-5xl font-bold">Our Track Records</div>
+            <div className="h-2 mt-3 bg-linear-to-br from-orange-600 to-orange-400 w-55 rounded-full"></div>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default page;
