@@ -35,7 +35,7 @@ export default function LeadSmartMore({
             onClick={(e) => e.stopPropagation()}
             className="bg-white md:w-[50%] w-[80%] h-fit relative"
           >
-            <X size={20} className="absolute top-2 right-2" onClick={onClose} />
+            <X size={20} className="absolute top-2 right-2 cursor-pointer" onClick={onClose} />
             <div className="p-18 flex flex-col gap-10 justify-center">
               <Brain size={50} className="text-[#F97316]" />
               <p className="font-bold text-2xl">Smart Technology</p>

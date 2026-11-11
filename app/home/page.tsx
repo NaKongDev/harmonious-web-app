@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Poppins } from "next/font/google";
 import { motion } from "motion/react";
 import {
@@ -26,6 +26,7 @@ import LeadTeamMore from "@/components/LeadTeamMore";
 import LeadSmartMore from "@/components/LeadSmartMore";
 import LeadSupportMore from "@/components/LeadSupportMore";
 import ContactUs from "@/components/ContactUs";
+import AutoImageSlider from "@/components/AutoImageSlider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -44,6 +45,14 @@ function page() {
   const [openSmart, setOpenSmart] = useState<boolean>(false);
   const [openSup, setOpenSup] = useState<boolean>(false);
   const [openContactUs, setOpenContactUs] = useState<boolean>(false);
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div
       // className={`bg-linear-to-b from-[#FFFFFF] to-[#FBD2B6] h-600 ${poppins.variable} font-poppins`}
@@ -56,7 +65,14 @@ function page() {
       <ContactUs open={openContactUs} onClose={() => setOpenContactUs(false)} />
 
       <div className="fixed flex justify-between items-center md:px-15 px-5 pt-5 top-0 w-full text-lg ">
-        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          onClick={() => {
+            scrollToSection("home");
+            setPage("home");
+          }}
+        >
           <img
             src="/LogoHMS3.png"
             className="w-40 drop-shadow-xl drop-shadow-white"
@@ -69,40 +85,40 @@ function page() {
           className="hidden md:flex z-50 justify-between text-base items-center gap-5 bg-white font-bold rounded-full border border-black/10 shadow-gray-500/20 backdrop-blur-xl shadow-lg py-1 px-1"
         >
           <motion.a
-            href="#home"
             whileTap={{ scale: 0.8 }}
-            className={`px-5 py-1 rounded-full ${page === "home" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
+            className={`px-5 py-1 cursor-pointer rounded-full ${page === "home" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
             onClick={() => {
+              scrollToSection("home");
               setPage("home");
             }}
           >
             Home
           </motion.a>
           <motion.a
-            href="#about"
             whileTap={{ scale: 0.8 }}
-            className={`px-5 py-1 rounded-full ${page === "about" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
+            className={`px-5 py-1 cursor-pointer rounded-full ${page === "about" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
             onClick={() => {
+              scrollToSection("about");
               setPage("about");
             }}
           >
             About
           </motion.a>
           <motion.a
-            href="#service"
             whileTap={{ scale: 0.8 }}
-            className={`px-5 py-1 rounded-full ${page === "service" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
+            className={`px-5 py-1 cursor-pointer rounded-full ${page === "service" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
             onClick={() => {
+              scrollToSection("service");
               setPage("service");
             }}
           >
             Service
           </motion.a>
           <motion.a
-            href="#trackRecords"
             whileTap={{ scale: 0.8 }}
-            className={`px-5 py-1 rounded-full ${page === "trackRecords" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
+            className={`px-5 py-1 cursor-pointer rounded-full ${page === "trackRecords" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
             onClick={() => {
+              scrollToSection("trackRecords");
               setPage("trackRecords");
             }}
           >
@@ -114,7 +130,7 @@ function page() {
           animate={{ scale: 1 }}
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
-          className="flex gap-3 text-sm items-center bg-linear-to-br from-orange-600 to-orange-400 px-5 py-2 rounded-full text-white font-bold shadow-lg border border-black/10"
+          className="flex cursor-pointer gap-3 text-sm items-center bg-linear-to-br from-orange-600 to-orange-400 px-5 py-2 rounded-full text-white font-bold shadow-lg border border-black/10"
           onClick={() => setOpenContactUs(true)}
         >
           Contact Us{" "}
@@ -199,7 +215,7 @@ function page() {
         </div>
         <div
           id="about"
-          className="md:px-55 scroll-mt-70 px-5 py-10 bg-linear-to-br from-orange-600 to-orange-400 w-full text-white grid md:grid-cols-2 grid-cols-1"
+          className="md:px-55 scroll-mt-30 px-5 py-10 bg-linear-to-br from-orange-600 to-orange-400 w-full text-white grid md:grid-cols-2 grid-cols-1"
         >
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
             <div className="text-5xl font-bold">Why Choose Harmonious ?</div>
@@ -223,7 +239,7 @@ function page() {
               <p className="font-bold text-xl">Solid Track Records</p>
               <p className="text-sm">22 years of proven business experience.</p>
               <p
-                className="hover:text-[#F97316] duration-300 flex items-center gap-2"
+                className="hover:text-[#F97316] duration-300 flex items-center gap-2 cursor-pointer"
                 onClick={() => setOpenSolid(true)}
               >
                 Lead more <MoveRight size={15} />
@@ -234,7 +250,7 @@ function page() {
               <p className="font-bold text-xl">Team of Professionals</p>
               <p className="text-sm">Experienced SAP and CRM consultants.</p>
               <p
-                className="hover:text-[#F97316] duration-300 flex items-center gap-2"
+                className="hover:text-[#F97316] duration-300 flex items-center gap-2 cursor-pointer"
                 onClick={() => setOpenTeam(true)}
               >
                 Lead more <MoveRight size={15} />
@@ -245,7 +261,7 @@ function page() {
               <p className="font-bold text-xl">Smart Technology</p>
               <p className="text-sm">Modern solutions for business growth.</p>
               <p
-                className="hover:text-[#F97316] duration-300 flex items-center gap-2"
+                className="hover:text-[#F97316] duration-300 flex items-center gap-2 cursor-pointer"
                 onClick={() => setOpenSmart(true)}
               >
                 Lead more <MoveRight size={15} />
@@ -256,7 +272,7 @@ function page() {
               <p className="font-bold text-xl">Support</p>
               <p className="text-sm">Reliable support whenever you need it.</p>
               <p
-                className="hover:text-[#F97316] duration-300 flex items-center gap-2"
+                className="hover:text-[#F97316] duration-300 flex items-center gap-2 cursor-pointer"
                 onClick={() => setOpenSup(true)}
               >
                 Lead more <MoveRight size={15} />
@@ -362,7 +378,7 @@ function page() {
 
         <div
           id="trackRecords"
-          className="md:px-55 scroll-mt-70 px-5 py-10 h-fit bg-linear-to-br from-orange-600 to-orange-400 w-full"
+          className="md:px-55 scroll-mt-30 px-5 py-10 h-fit bg-linear-to-br from-orange-600 to-orange-400 w-full"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -403,7 +419,8 @@ function page() {
         <div className="md:px-55 px-5 py-5 ">
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
             <div className="text-5xl font-bold">Our Track Records</div>
-            <div className="h-2 mt-3 bg-linear-to-br from-orange-600 to-orange-400 w-55 rounded-full"></div>
+            <div className="h-2 w-55 mt-3 bg-linear-to-br from-orange-600 to-orange-400 rounded-full"></div>
+            <AutoImageSlider />
           </motion.div>
         </div>
 
@@ -417,38 +434,36 @@ function page() {
               <img src={"/LogoHMS3.png"} className="bg-white px-5 py-1 w-50" />
             </div>
             <div>
-              <p className="text-3xl font-bold mb-2">
-                Quick Links
-                <div className="h-1 mt-1 bg-white w-20 rounded-full"></div>
-              </p>
+              <p className="text-3xl font-bold mb-2">Quick Links</p>
+              <div className="h-1 mt-1 bg-white w-20 rounded-full mb-2"></div>
               <div className="grid grid-cols-1 gap-2">
                 <a
-                  href="#home"
                   onClick={() => {
+                    scrollToSection("home");
                     setPage("home");
                   }}
                 >
                   Home
                 </a>
                 <a
-                  href="#about"
                   onClick={() => {
+                    scrollToSection("about");
                     setPage("about");
                   }}
                 >
                   About
                 </a>
                 <a
-                  href="#service"
                   onClick={() => {
+                    scrollToSection("service");
                     setPage("service");
                   }}
                 >
                   Service
                 </a>
                 <a
-                  href="#trackRecords"
                   onClick={() => {
+                    scrollToSection("trackRecords");
                     setPage("trackRecords");
                   }}
                 >
@@ -457,39 +472,35 @@ function page() {
               </div>
             </div>
             <div>
-              <p className="text-3xl font-bold mb-2">
-                Contact Info
-                <div className="h-1 mt-1 bg-white w-20 rounded-full"></div>
-              </p>
+              <p className="text-3xl font-bold mb-2">Contact Info</p>
+              <div className="h-1 mt-1 bg-white w-20 rounded-full mb-2"></div>
               <div className="grid grid-cols-5 gap-2">
                 <div className="flex justify-center">
                   <Mail size={25} />
                 </div>
-                <p className="col-span-4">info@harmonious.co.th</p>
+                <div className="col-span-4">info@harmonious.co.th</div>
                 <div className="flex justify-center">
                   <Phone size={25} />
                 </div>
-                <p className="col-span-4">+66 2941 2877</p>
+                <div className="col-span-4">+66 2941 2877</div>
                 <div className="flex justify-center">
                   <Clock size={25} />
                 </div>
-                <p className="col-span-4">
+                <div className="col-span-4">
                   Mon-Fri: 9am to 6pm <p>Saturday / Sunday: Closed</p>
-                </p>
+                </div>
                 <div className="flex justify-center">
                   <MapPinned size={25} />
                 </div>
-                <p className="col-span-4">
+                <div className="col-span-4">
                   180 Soi Ngamwongwan 48 Ngamwongwan Rd., Ladyao Chatuchak,
                   Bangkok 10900 Thailand
-                </p>
+                </div>
               </div>
             </div>
             <div>
-              <p className="text-3xl font-bold mb-2">
-                Map
-                <div className="h-1 mt-1 bg-white w-20 rounded-full"></div>
-              </p>
+              <p className="text-3xl font-bold mb-2">Map</p>
+              <div className="h-1 mt-1 bg-white w-20 rounded-full mb-2"></div>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3873.93287580157!2d100.56485017623056!3d13.843067695171758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ce69526d3cf%3A0x8547fcbd096650a1!2sHarmonious%20Company%20Ltd.!5e0!3m2!1sth!2sth!4v1794371093119!5m2!1sth!2sth"
                 width="350"

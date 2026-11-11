@@ -42,7 +42,7 @@ export default function ContactUs({
             animate={{ scale: 1 }}
             className="bg-white md:w-[50%] w-[80%] h-fit relative z-150"
           >
-            <X size={20} className="absolute top-2 right-2" onClick={onClose} />
+            <X size={20} className="absolute top-2 right-2 cursor-pointer" onClick={onClose} />
             <div className="p-10 flex flex-col gap-5 justify-center">
               <img src={"/LogoHMS3.png"} className="w-40" />
               <p className="font-bold text-2xl flex items-center gap-2">
@@ -99,7 +99,7 @@ export default function ContactUs({
                   animate={{ scale: 1 }}
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.8 }}
-                  className="flex items-center px-2 py-1 gap-2 text-white bg-orange-400"
+                  className="flex items-center px-2 py-1 gap-2 text-white bg-orange-400 shadow-lg cursor-pointer"
                 >
                   Send Now <Send size={18} />
                 </motion.button>
