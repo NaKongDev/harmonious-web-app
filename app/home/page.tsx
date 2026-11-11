@@ -19,6 +19,8 @@ import {
 import CountUp from "@/component/CountUp";
 import LeadSolidMore from "@/component/LeadSolidMore";
 import LeadTeamMore from "@/component/LeadTeamMore";
+import LeadSmartMore from "@/component/LeadSmartMore";
+import LeadSupportMore from "@/component/LeadSupportMore";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -43,6 +45,8 @@ function page() {
     >
       <LeadSolidMore open={openSolid} onClose={() => setOpenSolid(false)} />
       <LeadTeamMore open={openTeam} onClose={() => setOpenTeam(false)} />
+      <LeadSmartMore open={openSmart} onClose={() => setOpenSmart(false)} />
+      <LeadSupportMore open={openSup} onClose={() => setOpenSup(false)} />
 
       <div className="fixed flex justify-between items-center md:px-15 px-5 pt-5 top-0 w-full text-lg">
         <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
@@ -59,7 +63,7 @@ function page() {
         >
           <motion.button
             whileTap={{ scale: 0.8 }}
-            className={`px-5 py-1 rounded-full ${page === "home" ? "bg-[#F97316] text-white" : "bg-white"} duration-300`}
+            className={`px-5 py-1 rounded-full ${page === "home" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
             onClick={() => {
               setPage("home");
             }}
@@ -68,7 +72,7 @@ function page() {
           </motion.button>
           <motion.button
             whileTap={{ scale: 0.8 }}
-            className={`px-5 py-1 rounded-full ${page === "about" ? "bg-[#F97316] text-white" : "bg-white"} duration-300`}
+            className={`px-5 py-1 rounded-full ${page === "about" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
             onClick={() => {
               setPage("about");
             }}
@@ -77,7 +81,7 @@ function page() {
           </motion.button>
           <motion.button
             whileTap={{ scale: 0.8 }}
-            className={`px-5 py-1 rounded-full ${page === "service" ? "bg-[#F97316] text-white" : "bg-white"} duration-300`}
+            className={`px-5 py-1 rounded-full ${page === "service" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
             onClick={() => {
               setPage("service");
             }}
@@ -86,7 +90,7 @@ function page() {
           </motion.button>
           <motion.button
             whileTap={{ scale: 0.8 }}
-            className={`px-5 py-1 rounded-full ${page === "trackRecords" ? "bg-[#F97316] text-white" : "bg-white"} duration-300`}
+            className={`px-5 py-1 rounded-full ${page === "trackRecords" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
             onClick={() => {
               setPage("trackRecords");
             }}
@@ -99,7 +103,7 @@ function page() {
           animate={{ scale: 1 }}
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
-          className="flex gap-3 text-sm items-center bg-[#F97316] px-5 py-2 rounded-full text-white font-bold shadow-lg border border-black/10"
+          className="flex gap-3 text-sm items-center bg-linear-to-br from-orange-600 to-orange-400 px-5 py-2 rounded-full text-white font-bold shadow-lg border border-black/10"
           onClick={() => setClocker(true)}
         >
           Contact Us{" "}
@@ -142,7 +146,7 @@ function page() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             whileHover={{ scale: 1.5 }}
-            className="md:w-[25%] shadow-lg border border-black/10  bg-white text-[#F97316] hover:bg-[#F97316] hover:text-white rounded-lg px-5 py-8 flex flex-col items-center gap-3 duration-300"
+            className="md:w-[25%] shadow-lg border border-black/10  bg-white text-[#F97316] hover:bg-linear-to-br from-orange-600 to-orange-400 hover:text-white rounded-lg px-5 py-8 flex flex-col items-center gap-3 duration-300"
           >
             <Flame size={40} />
             <span className="w-full text-center text-xl font-bold">
@@ -153,7 +157,7 @@ function page() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             whileHover={{ scale: 1.5 }}
-            className="md:w-[25%] shadow-lg border border-black/10 bg-white text-[#F97316] hover:bg-[#F97316] hover:text-white rounded-lg p-5 py-8 flex flex-col items-center gap-3 duration-300"
+            className="md:w-[25%] shadow-lg border border-black/10 bg-white text-[#F97316] hover:bg-linear-to-br from-orange-600 to-orange-400 hover:text-white rounded-lg p-5 py-8 flex flex-col items-center gap-3 duration-300"
           >
             <BuildingComplex size={40} />
             <span className="w-full text-center text-xl font-bold">
@@ -164,7 +168,7 @@ function page() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             whileHover={{ scale: 1.5 }}
-            className="md:w-[25%] shadow-lg border border-black/10 bg-white text-[#F97316] hover:bg-[#F97316] hover:text-white rounded-lg p-5 py-8 flex flex-col items-center gap-3 duration-300"
+            className="md:w-[25%] shadow-lg border border-black/10 bg-white text-[#F97316] hover:bg-linear-to-br from-orange-600 to-orange-400 hover:text-white rounded-lg p-5 py-8 flex flex-col items-center gap-3 duration-300"
           >
             <Handshake size={40} />
             <span className="w-full text-center text-xl font-bold">
@@ -217,16 +221,22 @@ function page() {
               <Brain size={32} className="text-[#F97316]" />
               <p className="font-bold text-xl">Smart Technology</p>
               <p className="text-sm">Modern solutions for business growth.</p>
-              <p className="hover:text-[#F97316] duration-300 flex items-center gap-2">
-                Lead more <MoveRight size={15} onClick={() => setOpenSmart(true)}/>
+              <p
+                className="hover:text-[#F97316] duration-300 flex items-center gap-2"
+                onClick={() => setOpenSmart(true)}
+              >
+                Lead more <MoveRight size={15} />
               </p>
             </div>
             <div className="bg-white p-5 flex flex-col gap-3 shadow-lg">
               <MessageCircleText size={32} className="text-[#F97316]" />
               <p className="font-bold text-xl">Support</p>
               <p className="text-sm">Reliable support whenever you need it.</p>
-              <p className="hover:text-[#F97316] duration-300 flex items-center gap-2">
-                Lead more <MoveRight size={15} onClick={() => setOpenSup(true)}/>
+              <p
+                className="hover:text-[#F97316] duration-300 flex items-center gap-2"
+                onClick={() => setOpenSup(true)}
+              >
+                Lead more <MoveRight size={15} />
               </p>
             </div>
           </motion.div>
@@ -365,6 +375,26 @@ function page() {
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
             <div className="text-5xl font-bold">Our Track Records</div>
             <div className="h-2 mt-3 bg-linear-to-br from-orange-600 to-orange-400 w-55 rounded-full"></div>
+          </motion.div>
+        </div>
+
+        <div className="md:px-55 px-5 py-5 bg-linear-to-br from-orange-600 to-orange-400">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="grid grid-cols-1 md:grid-cols-4 gap-2"
+          >
+            <div className="text-5xl font-bold">
+              <img src={"/LogoHMS3.png"} className="bg-white px-5 py-1 w-50" />
+            </div>
+            <div>
+              <p>Quick Links</p>
+              <p>Home</p>
+              <p>Quick Links</p>
+              <p>Quick Links</p>
+            </div>
+            <div className="text-5xl font-bold">Our Track Records</div>
+            <div className="text-5xl font-bold">Our Track Records</div>
           </motion.div>
         </div>
       </div>
