@@ -15,12 +15,17 @@ import {
   UsersRound,
   Hourglass,
   Package,
+  Clock,
+  Mail,
+  MapPinned,
+  Phone,
 } from "lucide-react";
-import CountUp from "@/component/CountUp";
-import LeadSolidMore from "@/component/LeadSolidMore";
-import LeadTeamMore from "@/component/LeadTeamMore";
-import LeadSmartMore from "@/component/LeadSmartMore";
-import LeadSupportMore from "@/component/LeadSupportMore";
+import CountUp from "@/components/CountUp";
+import LeadSolidMore from "@/components/LeadSolidMore";
+import LeadTeamMore from "@/components/LeadTeamMore";
+import LeadSmartMore from "@/components/LeadSmartMore";
+import LeadSupportMore from "@/components/LeadSupportMore";
+import ContactUs from "@/components/ContactUs";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -38,6 +43,7 @@ function page() {
   const [openTeam, setOpenTeam] = useState<boolean>(false);
   const [openSmart, setOpenSmart] = useState<boolean>(false);
   const [openSup, setOpenSup] = useState<boolean>(false);
+  const [openContactUs, setOpenContactUs] = useState<boolean>(false);
   return (
     <div
       // className={`bg-linear-to-b from-[#FFFFFF] to-[#FBD2B6] h-600 ${poppins.variable} font-poppins`}
@@ -47,21 +53,23 @@ function page() {
       <LeadTeamMore open={openTeam} onClose={() => setOpenTeam(false)} />
       <LeadSmartMore open={openSmart} onClose={() => setOpenSmart(false)} />
       <LeadSupportMore open={openSup} onClose={() => setOpenSup(false)} />
+      <ContactUs open={openContactUs} onClose={() => setOpenContactUs(false)} />
 
       <div className="fixed flex justify-between items-center md:px-15 px-5 pt-5 top-0 w-full text-lg ">
         <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
           <img
             src="/LogoHMS3.png"
-            className="w-40 drop-shadow-lg drop-shadow-orange-300/50"
+            className="w-40 drop-shadow-xl drop-shadow-white"
             alt="Logo"
           />
         </motion.div>
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="hidden md:flex justify-between text-base items-center gap-5 bg-white font-bold rounded-full border border-black/10 shadow-gray-500/20 backdrop-blur-xl shadow-lg py-1 px-1"
+          className="hidden md:flex z-50 justify-between text-base items-center gap-5 bg-white font-bold rounded-full border border-black/10 shadow-gray-500/20 backdrop-blur-xl shadow-lg py-1 px-1"
         >
-          <motion.button
+          <motion.a
+            href="#home"
             whileTap={{ scale: 0.8 }}
             className={`px-5 py-1 rounded-full ${page === "home" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
             onClick={() => {
@@ -69,8 +77,9 @@ function page() {
             }}
           >
             Home
-          </motion.button>
-          <motion.button
+          </motion.a>
+          <motion.a
+            href="#about"
             whileTap={{ scale: 0.8 }}
             className={`px-5 py-1 rounded-full ${page === "about" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
             onClick={() => {
@@ -78,8 +87,9 @@ function page() {
             }}
           >
             About
-          </motion.button>
-          <motion.button
+          </motion.a>
+          <motion.a
+            href="#service"
             whileTap={{ scale: 0.8 }}
             className={`px-5 py-1 rounded-full ${page === "service" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
             onClick={() => {
@@ -87,8 +97,9 @@ function page() {
             }}
           >
             Service
-          </motion.button>
-          <motion.button
+          </motion.a>
+          <motion.a
+            href="#trackRecords"
             whileTap={{ scale: 0.8 }}
             className={`px-5 py-1 rounded-full ${page === "trackRecords" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
             onClick={() => {
@@ -96,7 +107,7 @@ function page() {
             }}
           >
             Track Records
-          </motion.button>
+          </motion.a>
         </motion.div>
         <motion.div
           initial={{ scale: 0 }}
@@ -104,7 +115,7 @@ function page() {
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
           className="flex gap-3 text-sm items-center bg-linear-to-br from-orange-600 to-orange-400 px-5 py-2 rounded-full text-white font-bold shadow-lg border border-black/10"
-          onClick={() => setClocker(true)}
+          onClick={() => setOpenContactUs(true)}
         >
           Contact Us{" "}
           <div>
@@ -113,8 +124,15 @@ function page() {
         </motion.div>
       </div>
 
-      <div className="flex flex-col gap-10">
-        <div className="h-200 bg-[url(/FuturisticHarmoniousAI.png)]">
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        className="flex flex-col gap-10"
+      >
+        <div
+          id="home"
+          className="md:h-200 not-md:py-15 bg-[url(/FuturisticHarmoniousAI.png)]"
+        >
           <div className="md:px-55 px-5 grid md:grid-cols-2 grid-cols-1 p-2 gap-5 md:my-30">
             <motion.div
               initial={{ scale: 0 }}
@@ -122,7 +140,7 @@ function page() {
               className="flex flex-col gap-5"
             >
               <p className="text-4xl font-bold">Welcome to</p>
-              <p className="md:text-8xl text-5xl font-bold text-[#F97316] text-shadow-lg/80 text-shadow-orange-300">
+              <p className="md:text-8xl text-5xl font-bold text-[#F97316] text-shadow-lg/90 text-shadow-orange-200">
                 Harmonious
               </p>
               <p className="text-white bg-gray-800/60 p-4 w-[80%]">
@@ -179,7 +197,10 @@ function page() {
             </motion.div>
           </div>
         </div>
-        <div className="md:px-55 px-5 py-10 bg-linear-to-br from-orange-600 to-orange-400 w-full text-white grid md:grid-cols-2 grid-cols-1">
+        <div
+          id="about"
+          className="md:px-55 scroll-mt-70 px-5 py-10 bg-linear-to-br from-orange-600 to-orange-400 w-full text-white grid md:grid-cols-2 grid-cols-1"
+        >
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
             <div className="text-5xl font-bold">Why Choose Harmonious ?</div>
             <div className="h-2 mt-3 bg-white w-55 rounded-full"></div>
@@ -244,7 +265,10 @@ function page() {
           </motion.div>
         </div>
 
-        <div className="md:px-55 px-5 py-10 w-full grid md:grid-cols-3 grid-cols-1 gap-10">
+        <div
+          id="service"
+          className="md:px-55 scroll-mt-30 px-5 py-10 w-full grid md:grid-cols-3 grid-cols-1 gap-10"
+        >
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
             <div className="text-5xl font-bold">What We Do ?</div>
             <div className="h-2 mt-3 bg-linear-to-br from-orange-600 to-orange-400 w-55 rounded-full"></div>
@@ -336,7 +360,10 @@ function page() {
           </motion.div>
         </div>
 
-        <div className="md:px-55 px-5 py-10 h-fit bg-linear-to-br from-orange-600 to-orange-400 w-full">
+        <div
+          id="trackRecords"
+          className="md:px-55 scroll-mt-70 px-5 py-10 h-fit bg-linear-to-br from-orange-600 to-orange-400 w-full"
+        >
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -384,7 +411,7 @@ function page() {
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="grid grid-cols-1 md:grid-cols-4 gap-2"
+            className="grid grid-cols-1 md:grid-cols-4 gap-5"
           >
             <div className="text-5xl font-bold">
               <img src={"/LogoHMS3.png"} className="bg-white px-5 py-1 w-50" />
@@ -394,24 +421,69 @@ function page() {
                 Quick Links
                 <div className="h-1 mt-1 bg-white w-20 rounded-full"></div>
               </p>
-              <p>Home</p>
-              <p>About</p>
-              <p>Service</p>
-              <p>Track Records</p>
+              <div className="grid grid-cols-1 gap-2">
+                <a
+                  href="#home"
+                  onClick={() => {
+                    setPage("home");
+                  }}
+                >
+                  Home
+                </a>
+                <a
+                  href="#about"
+                  onClick={() => {
+                    setPage("about");
+                  }}
+                >
+                  About
+                </a>
+                <a
+                  href="#service"
+                  onClick={() => {
+                    setPage("service");
+                  }}
+                >
+                  Service
+                </a>
+                <a
+                  href="#trackRecords"
+                  onClick={() => {
+                    setPage("trackRecords");
+                  }}
+                >
+                  Track Records
+                </a>
+              </div>
             </div>
             <div>
               <p className="text-3xl font-bold mb-2">
                 Contact Info
                 <div className="h-1 mt-1 bg-white w-20 rounded-full"></div>
               </p>
-              <p>info@harmonious.co.th</p>
-              <p>
-                Mon-Fri: 9am to 6pm <p>Saturday / Sunday: Closed</p>
-              </p>
-              <p>
-                180 Soi Ngamwongwan 48 Ngamwongwan Rd., Ladyao Chatuchak,
-                Bangkok 10900 Thailand
-              </p>
+              <div className="grid grid-cols-5 gap-2">
+                <div className="flex justify-center">
+                  <Mail size={25} />
+                </div>
+                <p className="col-span-4">info@harmonious.co.th</p>
+                <div className="flex justify-center">
+                  <Phone size={25} />
+                </div>
+                <p className="col-span-4">+66 2941 2877</p>
+                <div className="flex justify-center">
+                  <Clock size={25} />
+                </div>
+                <p className="col-span-4">
+                  Mon-Fri: 9am to 6pm <p>Saturday / Sunday: Closed</p>
+                </p>
+                <div className="flex justify-center">
+                  <MapPinned size={25} />
+                </div>
+                <p className="col-span-4">
+                  180 Soi Ngamwongwan 48 Ngamwongwan Rd., Ladyao Chatuchak,
+                  Bangkok 10900 Thailand
+                </p>
+              </div>
             </div>
             <div>
               <p className="text-3xl font-bold mb-2">
@@ -420,8 +492,8 @@ function page() {
               </p>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3873.93287580157!2d100.56485017623056!3d13.843067695171758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ce69526d3cf%3A0x8547fcbd096650a1!2sHarmonious%20Company%20Ltd.!5e0!3m2!1sth!2sth!4v1794371093119!5m2!1sth!2sth"
-                width="340"
-                height="280"
+                width="350"
+                height="230"
                 className="border border-black/10 shadow-gray-500/20 rounded-lg"
                 // allowfullscreen=""
                 loading="lazy"
@@ -430,7 +502,7 @@ function page() {
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

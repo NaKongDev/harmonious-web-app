@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { MessageCircleText, X } from "lucide-react";
 import { motion } from "motion/react";
 
@@ -10,6 +10,18 @@ export default function LeadSupportMore({
   open: boolean;
   onClose: () => void;
 }) {
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+
+    if (open) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [open]);
+
   return (
     <>
       {open && (
@@ -20,6 +32,7 @@ export default function LeadSupportMore({
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
+            onClick={(e) => e.stopPropagation()}
             className="bg-white md:w-[50%] w-[80%] h-fit relative"
           >
             <X size={20} className="absolute top-2 right-2" onClick={onClose} />
