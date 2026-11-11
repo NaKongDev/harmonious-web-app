@@ -135,7 +135,7 @@ function page() {
             className="flex justify-center items-center"
           >
             <img
-              src={"/image_header.jpg"}
+              src={"/FuturisticHarmoniousAI.png"}
               className="w-full rounded-lg shadow-xl shadow-gray-500/20 border border-black/20"
             />
           </motion.div>
