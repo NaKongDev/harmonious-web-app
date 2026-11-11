@@ -41,14 +41,14 @@ function page() {
   return (
     <div
       // className={`bg-linear-to-b from-[#FFFFFF] to-[#FBD2B6] h-600 ${poppins.variable} font-poppins`}
-      className={`bg-[#FFFFFF] ${poppins.variable} font-poppins`}
+      className={`bg-[#FFFFFF] ${poppins.variable} font-poppins `}
     >
       <LeadSolidMore open={openSolid} onClose={() => setOpenSolid(false)} />
       <LeadTeamMore open={openTeam} onClose={() => setOpenTeam(false)} />
       <LeadSmartMore open={openSmart} onClose={() => setOpenSmart(false)} />
       <LeadSupportMore open={openSup} onClose={() => setOpenSup(false)} />
 
-      <div className="fixed flex justify-between items-center md:px-15 px-5 pt-5 top-0 w-full text-lg">
+      <div className="fixed flex justify-between items-center md:px-15 px-5 pt-5 top-0 w-full text-lg ">
         <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
           <img
             src="/LogoHMS3.png"
@@ -113,70 +113,72 @@ function page() {
         </motion.div>
       </div>
 
-      <div className="pt-25 flex flex-col gap-10">
-        <div className="md:px-55 px-5 grid md:grid-cols-2 grid-cols-1 p-2 gap-5">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className="flex flex-col gap-5"
-          >
-            <p className="text-4xl font-bold">Welcome to</p>
-            <p className="md:text-8xl text-5xl font-bold text-[#F97316] text-shadow-lg/80 text-shadow-orange-300">
-              Harmonious
-            </p>
-            <p className="text-gray-600 w-[80%]">
-              22 Years of Experience in providing business solution! We help our
-              clients to achieve their goals im improving supply operations.
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className="flex justify-center items-center"
-          >
-            <img
-              src={"/image_header.jpg"}
+      <div className="flex flex-col gap-10">
+        <div className="h-200 bg-[url(/FuturisticHarmoniousAI.png)]">
+          <div className="md:px-55 px-5 grid md:grid-cols-2 grid-cols-1 p-2 gap-5 md:my-30">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="flex flex-col gap-5"
+            >
+              <p className="text-4xl font-bold">Welcome to</p>
+              <p className="md:text-8xl text-5xl font-bold text-[#F97316] text-shadow-lg/80 text-shadow-orange-300">
+                Harmonious
+              </p>
+              <p className="text-white bg-gray-800/60 p-4 w-[80%]">
+                22 Years of Experience in providing business solution! We help
+                our clients to achieve their goals im improving supply
+                operations.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="flex justify-center items-center"
+            >
+              {/* <img
+              src={"/Harmonious.png"}
               className="w-full rounded-lg shadow-xl shadow-gray-500/20 border border-black/20"
-            />
-          </motion.div>
-        </div>
+            /> */}
+            </motion.div>
+          </div>
 
-        <div className="md:px-55 px-5 md:flex not-md:grid not-md:grid-cols-1 not-md:gap-5 justify-center items-center gap-30">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            whileHover={{ scale: 1.5 }}
-            className="md:w-[25%] shadow-lg border border-black/10  bg-white text-[#F97316] hover:bg-linear-to-br from-orange-600 to-orange-400 hover:text-white rounded-lg px-5 py-8 flex flex-col items-center gap-3 duration-300"
-          >
-            <Flame size={40} />
-            <span className="w-full text-center text-xl font-bold">
-              Innovation with Passion
-            </span>
-          </motion.div>
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            whileHover={{ scale: 1.5 }}
-            className="md:w-[25%] shadow-lg border border-black/10 bg-white text-[#F97316] hover:bg-linear-to-br from-orange-600 to-orange-400 hover:text-white rounded-lg p-5 py-8 flex flex-col items-center gap-3 duration-300"
-          >
-            <BuildingComplex size={40} />
-            <span className="w-full text-center text-xl font-bold">
-              Business Insight & accuracy
-            </span>
-          </motion.div>
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            whileHover={{ scale: 1.5 }}
-            className="md:w-[25%] shadow-lg border border-black/10 bg-white text-[#F97316] hover:bg-linear-to-br from-orange-600 to-orange-400 hover:text-white rounded-lg p-5 py-8 flex flex-col items-center gap-3 duration-300"
-          >
-            <Handshake size={40} />
-            <span className="w-full text-center text-xl font-bold">
-              Reliability & partnership
-            </span>
-          </motion.div>
+          <div className="md:px-55 px-5 md:flex not-md:grid not-md:grid-cols-1 not-md:gap-5 justify-center items-center gap-30">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              whileHover={{ scale: 1.5 }}
+              className="md:w-[25%] shadow-lg border border-black/10  bg-white text-[#F97316] hover:bg-linear-to-br from-orange-600 to-orange-400 hover:text-white rounded-lg px-5 py-8 flex flex-col items-center gap-3 duration-300"
+            >
+              <Flame size={40} />
+              <span className="w-full text-center text-xl font-bold">
+                Innovation with Passion
+              </span>
+            </motion.div>
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              whileHover={{ scale: 1.5 }}
+              className="md:w-[25%] shadow-lg border border-black/10 bg-white text-[#F97316] hover:bg-linear-to-br from-orange-600 to-orange-400 hover:text-white rounded-lg p-5 py-8 flex flex-col items-center gap-3 duration-300"
+            >
+              <BuildingComplex size={40} />
+              <span className="w-full text-center text-xl font-bold">
+                Business Insight & accuracy
+              </span>
+            </motion.div>
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              whileHover={{ scale: 1.5 }}
+              className="md:w-[25%] shadow-lg border border-black/10 bg-white text-[#F97316] hover:bg-linear-to-br from-orange-600 to-orange-400 hover:text-white rounded-lg p-5 py-8 flex flex-col items-center gap-3 duration-300"
+            >
+              <Handshake size={40} />
+              <span className="w-full text-center text-xl font-bold">
+                Reliability & partnership
+              </span>
+            </motion.div>
+          </div>
         </div>
-
         <div className="md:px-55 px-5 py-10 bg-linear-to-br from-orange-600 to-orange-400 w-full text-white grid md:grid-cols-2 grid-cols-1">
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
             <div className="text-5xl font-bold">Why Choose Harmonious ?</div>
@@ -378,7 +380,7 @@ function page() {
           </motion.div>
         </div>
 
-        <div className="md:px-55 px-5 py-5 bg-linear-to-br from-orange-600 to-orange-400">
+        <div className="md:px-55 px-5 py-5 bg-linear-to-br from-orange-600 to-orange-400 text-white">
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -388,13 +390,44 @@ function page() {
               <img src={"/LogoHMS3.png"} className="bg-white px-5 py-1 w-50" />
             </div>
             <div>
-              <p>Quick Links</p>
+              <p className="text-3xl font-bold mb-2">
+                Quick Links
+                <div className="h-1 mt-1 bg-white w-20 rounded-full"></div>
+              </p>
               <p>Home</p>
-              <p>Quick Links</p>
-              <p>Quick Links</p>
+              <p>About</p>
+              <p>Service</p>
+              <p>Track Records</p>
             </div>
-            <div className="text-5xl font-bold">Our Track Records</div>
-            <div className="text-5xl font-bold">Our Track Records</div>
+            <div>
+              <p className="text-3xl font-bold mb-2">
+                Contact Info
+                <div className="h-1 mt-1 bg-white w-20 rounded-full"></div>
+              </p>
+              <p>info@harmonious.co.th</p>
+              <p>
+                Mon-Fri: 9am to 6pm <p>Saturday / Sunday: Closed</p>
+              </p>
+              <p>
+                180 Soi Ngamwongwan 48 Ngamwongwan Rd., Ladyao Chatuchak,
+                Bangkok 10900 Thailand
+              </p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold mb-2">
+                Map
+                <div className="h-1 mt-1 bg-white w-20 rounded-full"></div>
+              </p>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3873.93287580157!2d100.56485017623056!3d13.843067695171758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ce69526d3cf%3A0x8547fcbd096650a1!2sHarmonious%20Company%20Ltd.!5e0!3m2!1sth!2sth!4v1794371093119!5m2!1sth!2sth"
+                width="340"
+                height="280"
+                className="border border-black/10 shadow-gray-500/20 rounded-lg"
+                // allowfullscreen=""
+                loading="lazy"
+                // referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </motion.div>
         </div>
       </div>
