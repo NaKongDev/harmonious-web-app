@@ -126,7 +126,7 @@ function page() {
         >
           <motion.a
             whileTap={{ scale: 0.8 }}
-            className={`px-5 py-1 cursor-pointer rounded-full ${page === "home" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
+            className={`px-5 py-1 cursor-pointer rounded-full ${page === "home" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300 transition-colors`}
             onClick={() => {
               scrollToSection("home");
               setPage("home");
@@ -136,7 +136,7 @@ function page() {
           </motion.a>
           <motion.a
             whileTap={{ scale: 0.8 }}
-            className={`px-5 py-1 cursor-pointer rounded-full ${page === "about" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
+            className={`px-5 py-1 cursor-pointer rounded-full ${page === "about" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300 transition-colors`}
             onClick={() => {
               scrollToSection("about");
               setPage("about");
@@ -146,7 +146,7 @@ function page() {
           </motion.a>
           <motion.a
             whileTap={{ scale: 0.8 }}
-            className={`px-5 py-1 cursor-pointer rounded-full ${page === "service" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
+            className={`px-5 py-1 cursor-pointer rounded-full ${page === "service" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300 transition-colors`}
             onClick={() => {
               scrollToSection("service");
               setPage("service");
@@ -156,7 +156,7 @@ function page() {
           </motion.a>
           <motion.a
             whileTap={{ scale: 0.8 }}
-            className={`px-5 py-1 cursor-pointer rounded-full ${page === "trackRecords" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300`}
+            className={`px-5 py-1 cursor-pointer rounded-full ${page === "trackRecords" ? "bg-linear-to-br from-orange-600 to-orange-400 text-white" : "bg-white"} duration-300 transition-colors`}
             onClick={() => {
               scrollToSection("trackRecords");
               setPage("trackRecords");
@@ -209,7 +209,16 @@ function page() {
                 Saturday-Sunday
               </p>
               <p className="text-white bg-gray-800/70 p-4 w-[80%] text-sm">
-                Email : info@harmonious.co.th | Phone : +66 2941 2877
+                Email :{" "}
+                <span>
+                  <a
+                    href="mailto:info@harmonious.co.th"
+                    className="cursor-pointer text-white hover:text-orange-500 transition-colors"
+                  >
+                    info@harmonious.co.th
+                  </a>
+                </span>{" "}
+                | Phone : +66 2941 2877
               </p>
               <a
                 href="https://www.google.com/maps/place/Harmonious+Company+Ltd./@13.8430625,100.5674251,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29ce69526d3cf:0x8547fcbd096650a1!8m2!3d13.8430625!4d100.5674251!16s%2Fg%2F11b6bjflbc?entry=ttu&g_ep=EgoyMDI2MTEwOS4wIKXMDSoASAFQAw%3D%3D"
@@ -538,7 +547,16 @@ function page() {
                 <div className="flex justify-center">
                   <Mail size={25} />
                 </div>
-                <div className="col-span-4">info@harmonious.co.th</div>
+                <div className="col-span-4">
+                  <a
+                    href="mailto:info@harmonious.co.th"
+                    className="cursor-pointer text-white group transition-all duration-300 ease-in-out"
+                  >
+                    <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                      info@harmonious.co.th
+                    </span>
+                  </a>
+                </div>
                 <div className="flex justify-center">
                   <Phone size={25} />
                 </div>
