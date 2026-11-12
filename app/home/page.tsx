@@ -35,10 +35,10 @@ const poppins = Poppins({
   display: "swap",
 });
 
+type Page = "home" | "about" | "trackRecords" | "service";
+
 function page() {
-  const [page, setPage] = useState<
-    "home" | "about" | "service" | "trackRecords"
-  >("home");
+  const [page, setPage] = useState<Page>("home");
   const [clicker, setClocker] = useState<boolean>(false);
   const [openSolid, setOpenSolid] = useState<boolean>(false);
   const [openTeam, setOpenTeam] = useState<boolean>(false);
@@ -52,6 +52,46 @@ function page() {
       block: "start",
     });
   };
+
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, []);
+
+  useEffect(() => {
+    const sectionIds: Page[] = ["home", "about", "service", "trackRecords"];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setPage(entry.target.id as Page);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-30% 0px -60% 0px",
+        threshold: 0,
+      },
+    );
+
+    sectionIds.forEach((id) => {
+      const section = document.getElementById(id);
+
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
@@ -149,7 +189,7 @@ function page() {
           id="home"
           className="md:h-200 not-md:py-15 bg-[url(/FuturisticHarmoniousAI.png)]"
         >
-          <div className="md:px-55 px-5 grid md:grid-cols-2 grid-cols-1 p-2 gap-5 md:my-30">
+          <div className="md:px-55 md:my-15 px-5 grid md:grid-cols-2 grid-cols-1 p-2 gap-5">
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -159,11 +199,27 @@ function page() {
               <p className="md:text-8xl text-5xl font-bold text-[#F97316] text-shadow-lg/90 text-shadow-orange-200">
                 Harmonious
               </p>
-              <p className="text-white bg-gray-800/60 p-4 w-[80%]">
+              <p className="text-white bg-gray-800/70 p-4 w-[80%]">
                 22 Years of Experience in providing business solution! We help
                 our clients to achieve their goals im improving supply
                 operations.
               </p>
+              <p className="text-white bg-gray-800/70 p-4 w-[80%] text-sm">
+                Open : Monday-Friday Time : 9am to 6pm | Closed :
+                Saturday-Sunday
+              </p>
+              <p className="text-white bg-gray-800/70 p-4 w-[80%] text-sm">
+                Email : info@harmonious.co.th | Phone : +66 2941 2877
+              </p>
+              <a
+                href="https://www.google.com/maps/place/Harmonious+Company+Ltd./@13.8430625,100.5674251,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29ce69526d3cf:0x8547fcbd096650a1!8m2!3d13.8430625!4d100.5674251!16s%2Fg%2F11b6bjflbc?entry=ttu&g_ep=EgoyMDI2MTEwOS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white bg-gray-800/70 p-4 w-[80%] cursor-pointer text-sm"
+              >
+                Location : 180 Soi Ngamwongwan 48 Ngamwongwan Rd., Ladyao
+                Chatuchak, Bangkok 10900 Thailand
+              </a>
             </motion.div>
             <motion.div
               initial={{ scale: 0 }}
@@ -438,6 +494,7 @@ function page() {
               <div className="h-1 mt-1 bg-white w-20 rounded-full mb-2"></div>
               <div className="grid grid-cols-1 gap-2">
                 <a
+                  className="cursor-pointer"
                   onClick={() => {
                     scrollToSection("home");
                     setPage("home");
@@ -446,6 +503,7 @@ function page() {
                   Home
                 </a>
                 <a
+                  className="cursor-pointer"
                   onClick={() => {
                     scrollToSection("about");
                     setPage("about");
@@ -454,6 +512,7 @@ function page() {
                   About
                 </a>
                 <a
+                  className="cursor-pointer"
                   onClick={() => {
                     scrollToSection("service");
                     setPage("service");
@@ -462,6 +521,7 @@ function page() {
                   Service
                 </a>
                 <a
+                  className="cursor-pointer"
                   onClick={() => {
                     scrollToSection("trackRecords");
                     setPage("trackRecords");

@@ -80,7 +80,7 @@ export default function ContactUs({
                   <Input id="form-subject" type="text" placeholder="Subject" />
                 </div>
 
-                <div className="col-span-2">
+                <div className="md:col-span-2">
                   <p className="flex items-start gap-2 mb-1">
                     {" "}
                     <MessageSquare size={20} className="text-orange-400" />
