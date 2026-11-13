@@ -496,7 +496,14 @@ function page() {
             className="grid grid-cols-1 md:grid-cols-4 gap-5"
           >
             <div className="text-5xl font-bold">
-              <img src={"/LogoHMS3.png"} className="bg-white px-5 py-1 w-50" />
+              <img
+                src={"/LogoHMS3.png"}
+                className="bg-white px-5 py-1 w-50 cursor-pointer"
+                onClick={() => {
+                  scrollToSection("home");
+                  setPage("home");
+                }}
+              />
             </div>
             <div>
               <p className="text-3xl font-bold mb-2">Quick Links</p>
